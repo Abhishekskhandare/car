@@ -1,0 +1,19 @@
+<div>
+    <h2>Register</h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="onRegister()">
+      <label for="username">Username:</label>
+      <input type="text" id="username" formControlName="username" required>
+     
+  
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" required>
+    
+  
+      <label for="role">Role:</label>
+      <input type="text" id="role" formControlName="role" required>
+     
+  
+      <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+    </form>
+  </div>
+  

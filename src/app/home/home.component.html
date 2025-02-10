@@ -1,0 +1,56 @@
+<div>
+    <h2>Search Cars</h2>
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+      <label for="modelName">Model Name:</label>
+      <input type="text" id="modelName" formControlName="SearchByModelName" required>
+     
+  
+      <label for="modelCode">Model Code:</label>
+      <input type="text" id="modelCode" formControlName="SearchByModelCode" required>
+      
+      <label for="orderByManufacturingDate">Order by Manufacturing Date:</label>
+      <input type="checkbox" id="orderByManufacturingDate" formControlName="OrderbyManufacturingDate">
+  
+      <label for="sortByUpdatedDate">Sort by Updated Date:</label>
+      <input type="checkbox" id="sortByUpdatedDate" formControlName="SortByUpdatedDate">
+  
+      <button type="submit" [disabled]="searchForm.invalid">Search</button>
+    </form>
+  
+    <div class="overflow-x-auto">
+        <h3 class="text-xl font-semibold mb-4">Car Details</h3>
+        <table class="min-w-full bg-white">
+          <thead>
+            <tr>
+              <th class="py-2 px-4 border-b border-gray-300">Image</th>
+              <th class="py-2 px-4 border-b border-gray-300">Brand</th>
+              <th class="py-2 px-4 border-b border-gray-300">Class</th>
+              <th class="py-2 px-4 border-b border-gray-300">Model Name</th>
+              <th class="py-2 px-4 border-b border-gray-300">Model Code</th>
+              <th class="py-2 px-4 border-b border-gray-300">Description</th>
+              <th class="py-2 px-4 border-b border-gray-300">Features</th>
+              <th class="py-2 px-4 border-b border-gray-300">Price</th>
+              <th class="py-2 px-4 border-b border-gray-300">Date of Manufacturing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td class="py-2 px-4 border-b border-gray-300">
+                    <img class="w-40 h-auto" *ngIf="carData[0].imageBase64" [src]="carData[0].imageBase64" alt="{{ carData[0].modelName }}">
+                  </td>
+              <td class="py-2 px-4 border-b border-gray-300">{{ carData[0].brand }}</td>
+              <td class="py-2 px-4 border-b border-gray-300">{{ carData[0].class }}</td>
+              <td class="py-2 px-4 border-b border-gray-300">{{ carData[0].modelName }}</td>
+              <td class="py-2 px-4 border-b border-gray-300">{{ carData[0].modelCode }}</td>
+              <td class="py-2 px-4 border-b border-gray-300"><span [innerHTML]="carData[0].description"></span></td>
+              <td class="py-2 px-4 border-b border-gray-300"><span [innerHTML]="carData[0].features"></span></td>
+              <td class="py-2 px-4 border-b border-gray-300">{{ carData[0].price | currency }}</td>
+              <td class="py-2 px-4 border-b border-gray-300">{{ carData[0].dateOfManufacturing | date:'medium' }}</td>
+             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+  </div>
+  
